@@ -104,7 +104,21 @@ SELECT industry, SUM(revenue)
 FROM fortune_companies
 GROUP BY industry;
 
--- Lines : In the Healthcare industry, which company generated the most revenue?
+-- Lines 108 - 110 : In the Healthcare industry, which company generated the most revenue?
 SELECT company_name, MAX(revenue)
 FROM fortune_companies
 WHERE industry = 'Healthcare'
+
+-- Lines 113 - 116: Select companies that are not within the finacacials, finance and retail industry, that offer paid time off is atleast 20 days.
+SELECT*
+FROM fortune_companies
+WHERE industry NOT IN ("Finance", "Financials", "Retail")
+AND paid_time_off_days >=20;
+
+-- Lines 119 - 124: Select industries where the average employee tenure is atleast 5 years. These industries should exclude: Retail, Financials, and Financials.
+SELECT industry, AVG(avg_employee_tenure) AS  employee_tenure
+FROM fortune_companies
+WHERE industry NOT IN ("Finance", "Financials", "Retail")
+GROUP BY industry
+HAVING employee_tenure >= 5
+ORDER BY employee_tenure desc;
