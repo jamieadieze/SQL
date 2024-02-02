@@ -1,2 +1,2 @@
-# SQL
-SQL Portfolio for practising basics
+# SQL Portfolio for practising the basics
+
